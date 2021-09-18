@@ -2,15 +2,20 @@ package MaulanaNurhendronotoJmartAK;
 
 
 /**
- * JMart Praktikum Modul 1
+ * JMart Praktikum Modul 1, 2
  *
  * @author Maulana Nurhendronoto (2006577542)
- * @version 2.0
+ * @
  */
 public class Jmart
 {
     public static void main(String args[]){ 
         
+    }
+    
+    public static Product create()
+    {
+        return null;
     }
     
     public static int getPromo(){
