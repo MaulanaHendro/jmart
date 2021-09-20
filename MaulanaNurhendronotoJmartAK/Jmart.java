@@ -18,6 +18,8 @@ public class Jmart
         return new Product("Sepeda", 100, true, new PriceTag(100.0), ProductCategory.AUTOMOTIVE);
     }
     
+        
+    
    /* public static int getPromo(){
         return 0;
     }
