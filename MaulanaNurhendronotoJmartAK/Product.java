@@ -9,7 +9,7 @@ package MaulanaNurhendronotoJmartAK;
  */
 public class Product
 {
-    private int idCounter;
+    private static int idCounter = 0;
     public int id;
     public String name;
     public int weight;
@@ -20,11 +20,12 @@ public class Product
     
     public Product(String name, int id, boolean conditionedUsed, PriceTag priceTag, ProductCategory category)
     {
+        this.id = idCounter++;
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionedUsed;
         this.priceTag = priceTag;
-        this.rating = rating;
+        this.rating = new ProductRating();
         
     }
         

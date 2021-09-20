@@ -15,10 +15,10 @@ public class Jmart
     
     public static Product create()
     {
-        return null;
+        return new Product("Sepeda", 100, true, new PriceTag(100.0), ProductCategory.AUTOMOTIVE);
     }
     
-    public static int getPromo(){
+   /* public static int getPromo(){
         return 0;
     }
     
@@ -57,5 +57,5 @@ public class Jmart
     
     public static int getAdminFee(int price){
         return (int) (0.05 * price);
-    }
+    }*/
 }
