@@ -18,6 +18,20 @@ public class Jmart
         return new Product("Sepeda", 100, true, new PriceTag(100.0), ProductCategory.AUTOMOTIVE);
     }
     
+    public static Product createProduct()
+    {
+        return null;
+    }
+    
+    public static Coupon createCoupon()
+    {
+        return null;
+    }
+    
+    public static ShipmentDuration createShipmentDuration()
+    {
+        return null;
+    }
         
     
    /* public static int getPromo(){

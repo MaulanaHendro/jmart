@@ -43,14 +43,11 @@ public class PriceTag
     }
     
     private double getDiscountedPrice(){
-        if(discount > 100.0){
-            discount = 100.0;
-        }
-        if(discount == 100.0){
+        if(discount >= 100.0){
             return 0;
         }
         else{
-            return price - (discount * price);
+            return (double) (price - (discount * price));
         }
     }
 }
