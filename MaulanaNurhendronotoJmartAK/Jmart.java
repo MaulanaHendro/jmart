@@ -13,10 +13,10 @@ public class Jmart
         
     }
     
-    public static Product create()
+    /*public static Product create()
     {
         return new Product("Sepeda", 100, true, new PriceTag(100.0), ProductCategory.AUTOMOTIVE);
-    }
+    }*/
     
     public static Product createProduct()
     {
