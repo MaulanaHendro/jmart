@@ -28,10 +28,10 @@ public class Jmart
         return null;
     }
     
-    public static ShipmentDuration createShipmentDuration()
+    /*public static ShipmentDuration createShipmentDuration()
     {
         return null;
-    }
+    }*/
         
     
    /* public static int getPromo(){

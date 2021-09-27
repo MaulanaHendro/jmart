@@ -41,6 +41,11 @@ public class Product extends Recognizable
         this.storeId = store.id;
         
     }
+    
+    public boolean read (String name)
+    {
+        return false;
+    }
      
     
     

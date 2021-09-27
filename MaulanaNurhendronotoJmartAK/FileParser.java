@@ -7,6 +7,7 @@ package MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
+
 public interface FileParser
 {
     public boolean read(String content);
