@@ -7,7 +7,7 @@ package MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable
+public class Product extends Recognizable implements FileParser
 {
     private static int idCounter = 0;
     public String name;
@@ -47,6 +47,16 @@ public class Product extends Recognizable
         return false;
     }
      
-    
+    public String toString()
+    {
+        name = "Harry Potter";
+        weight = 1;
+        conditionUsed = false;
+        //priceTag = priceTag.21000;
+        category = category.BOOK;
+        //rating = rating(0);
+        storeId = 1;
+        return null;   
+    }
     
 }

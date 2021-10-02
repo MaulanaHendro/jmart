@@ -6,7 +6,7 @@ comment1.target=Complaint(int,\ int,\ int,\ int,\ java.lang.String)
 comment1.text=public\ Complaint(int\ id,\ Payment\ payment,\ String\ desc)\r\n\ \ \ {\r\n\ \ \ \ \ \ \ \r\n}
 comment2.params=
 comment2.target=boolean\ validate()
-comment2.text=public\ Complaint(int\ id,\ String\ desc)\r\n\ \ \ {\r\n\ \ \ \ \ \ \ date\ \=\ "27092021";\r\n\ \ \ \ \ \ \ this.desc\ \=\ desc;\r\n\ \ \ \ \ \ \ super(id);\r\n}
+comment2.text=public\ Complaint(int\ id,\ String\ desc)\r\n\ \ \ {\r\n\ \ \ \ \ \ \ Date\ date\ \=\ new\ Date();\r\n\ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ this.desc\ \=\ desc;\r\n\ \ \ \ \ \ \ //super(id);\r\n}
 comment3.params=
 comment3.target=Transactor\ perform()
 comment4.params=desc

@@ -1,6 +1,6 @@
 package MaulanaNurhendronotoJmartAK;
 
-
+import java.util.Date;
 /**
  * Write a description of class Complaint here.
  *
@@ -11,7 +11,7 @@ public class Complaint extends Recognizable implements FileParser
 {
    public int paymentId;
    public String desc;
-   public String date;
+   public Date date;
    
    /*public Complaint(int id, Payment payment, String desc)
    {
@@ -28,9 +28,10 @@ public class Complaint extends Recognizable implements FileParser
    
    /*public Complaint(int id, String desc)
    {
-       date = "27092021";
+       Date date = new Date();
+       
        this.desc = desc;
-       super(id);
+       //super(id);
    }*/
    public boolean validate()
    {

@@ -24,4 +24,12 @@ public class Account extends Recognizable implements FileParser
     public boolean read (String content){
         return false;
     }
+    
+    public String toString()
+    {
+        name = "Ramadhan";
+        email = "ramdhanganteng@gmai.com";
+        password = "gu3G4ntEnG";
+        return null;
+    }
 }

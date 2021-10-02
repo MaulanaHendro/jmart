@@ -7,4 +7,6 @@ comment2.params=id\ store\ name\ weight\ conitionUsed\ priceTag\ category
 comment2.target=Product(int,\ Store,\ java.lang.String,\ int,\ boolean,\ PriceTag,\ ProductCategory)
 comment3.params=name
 comment3.target=boolean\ read(java.lang.String)
-numComments=4
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

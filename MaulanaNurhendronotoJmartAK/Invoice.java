@@ -1,5 +1,5 @@
 package MaulanaNurhendronotoJmartAK;
-
+import java.util.Date;
 
 /**
  * Praktikum Modul 3 Post Test
@@ -9,7 +9,7 @@ package MaulanaNurhendronotoJmartAK;
  */
 public class Invoice extends Recognizable implements FileParser
 {
-    String date;
+    Date date;
     int buyerId;
     int productId;
     int complaintId;
