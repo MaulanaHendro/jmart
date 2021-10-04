@@ -2,6 +2,7 @@ package MaulanaNurhendronotoJmartAK;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.util.ArrayList;
 
 /**
  * Praktikum Modul 4 CS
@@ -41,5 +42,15 @@ public abstract class Invoice extends Recognizable implements FileParser
     }
     
     public abstract double getTotalPay();
+    
+    public class Record
+    {
+        public Status status;
+        public Date date;
+        public String message;
+        
+        ArrayList<Record> history = new ArrayList<Record>();
+        
+    }
 
 }

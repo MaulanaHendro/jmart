@@ -29,4 +29,15 @@ public class Complaint extends Recognizable implements FileParser
         return false;
     }
     
+    public String toString()
+    {
+        /*Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = formatter.format(date);*/
+        String date = "Complaint{date=" +this.date+ ",";
+        String desc = "desc='" + this.desc + "'";
+        
+        return date+desc;
+    }
+    
 }

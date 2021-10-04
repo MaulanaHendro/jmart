@@ -11,8 +11,13 @@ public class Jmart
 {
     public static void main(String[] args)
     {
+        Complaint comp = new Complaint(10, "barang rusak");
+        System.out.println(comp.toString());
         
+        Account acc = new Account(10, "Maulana", "maulana1@gmail.com", "MangUjang1");
+        System.out.println(acc.toString());
     }
+    
     
     /*public static Product createProduct()
     {
