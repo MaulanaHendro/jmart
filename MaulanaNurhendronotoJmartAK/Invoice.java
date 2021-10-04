@@ -1,43 +1,45 @@
 package MaulanaNurhendronotoJmartAK;
+
 import java.util.Date;
+import java.util.Calendar;
 
 /**
- * Praktikum Modul 3 Post Test
+ * Praktikum Modul 4 CS
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Maulana Nurhendronoto
  */
-public class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable implements FileParser
 {
-    Date date;
-    int buyerId;
-    int productId;
-    int complaintId;
-    Rating rating = Rating.NONE;
-    Status status = Status.WAITING_CONFIRMATION;
-    public enum Rating{
-        NONE, BAD, NEUTRAL, GOOD
-    }
+    public Date date;
+    public int buyerId;
+    public int productId;
+    public int complaintId;
+    public Rating rating;
+    public Status status;
     public enum Status{
         WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY, COMPLAINT, FINISHED, FAILED
     }
-    
-    protected Invoice(int buyerId, int productId, int complaintId)
-    {
-        super(buyerId);
-        this.productId = productId;
-        this.complaintId = complaintId;
+    public enum Rating{
+        NONE, BAD, NEUTRAL, GOOD
     }
-    @Override
-    public boolean read(String date)
+    
+    protected Invoice(int id, int buyerId, int productId)
     {
-        date = "27092021";
+        super(id);
+        this.buyerId = buyerId;
+        this.productId = productId;
+        this.complaintId = -1;
+        this.date = new Date();
+        rating = Rating.NONE;
+        status = Status.WAITING_CONFIRMATION;
+    }
+    
+    @Override
+    public boolean read(String content)
+    {
         return false;
     }
     
-    public double getTotalPay()
-    {
-        return 0.0;
-           
-    }
+    public abstract double getTotalPay();
+
 }

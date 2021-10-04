@@ -2,21 +2,38 @@ package MaulanaNurhendronotoJmartAK;
 
 
 /**
- * Praktikum Modul 3 Post Test
+ * Praktikum Modul 3
  *
- * @Maulana Nurhendronoto 2006577542
+ * @Maulana Nurhendronoto
  */
-
 public interface Transactor
 {
-    public default boolean validate()
-    {
-        return false;
+    public boolean validate();
+    
+    public Invoice perform();
+    
+    /*public String time;
+    public int buyerId;
+    public int storeId;
+    public Rating rating;
+    public enum Rating{
+        NONE, BAD, NEUTRAL, GOOD
     }
     
-    public default Invoice perform()
+    protected Transaction(int id, int buyerId, int storeId)
     {
-        return null;
+        super(id);
+        this.buyerId = buyerId;
+        this.storeId = storeId; 
     }
+    
+    protected Transaction(int id, Account buyer, Store store)
+    {
+        super(id);
+        this.buyerId = buyer.id;
+        this.storeId = store.id;
+    }*/
+    
+    
     
 }

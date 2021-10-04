@@ -7,48 +7,49 @@ package MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Coupon
+public class Coupon extends Recognizable
 {
-    public String name;
-    public int code;
-    public double cut;
-    public Type type;
-    public double minimum;
+    public final String name;
+    public final int code;
+    public final double cut;
+    public final Type type;
+    public final double minimum;
     private boolean used;
     public enum Type{
         DISCOUNT, REBATE
     }
     
-    public Coupon(String name, int code, Type type, double minimum, double cut)
+    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
     {
+        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
-        this.minimum = minimum;
         this.cut = cut;
-        this.used = false;
+        this.minimum = minimum;
+        used = false;
     }
     
     public boolean isUsed()
     {
-        return this.used;
+        return used;
     }
     
     public boolean canApply(PriceTag priceTag)
     {
-        if(priceTag.getAdjustedPrice() > this.minimum)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       if(priceTag.getAdjustedPrice() >= minimum && (used = false))
+       {
+           return true;
+       }
+       else
+       {
+           return false;
+       }
     }
     
     public double apply(PriceTag priceTag)
     {
-        this.used = true;
+        used = true;
         return priceTag.getAdjustedPrice() - cut;
     }
 }

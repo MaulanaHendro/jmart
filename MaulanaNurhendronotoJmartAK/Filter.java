@@ -1,24 +1,47 @@
 package MaulanaNurhendronotoJmartAK;
 
-//import java.util.Arraylist;
+import java.util.ArrayList;
+
 /**
- * Write a description of class Filter here.
+ * Praktikum Modul 4 CS
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Maulana Nurhendronoto
  */
 public class Filter
 {
-    /*public static filterPriceTag(PriceTag[] list, int value, boolean less)
+    public static ArrayList<PriceTag> filterPriceTag(PriceTag[] list, double value, boolean less)
     {
+        ArrayList<PriceTag> filter = new ArrayList<PriceTag>();
         
-    }*/
+        for(PriceTag listItem : list)
+        {
+            if((listItem.getAdjustedPrice() < value) && (less == true))
+            {
+                filter.add(listItem);
+            }
+            else if((listItem.getAdjustedPrice() >= value) && (less == false))
+            {
+                filter.add(listItem);
+            }
+        }
+        
+        return filter;
+    }
     
-    /*public static filterProductRating(ArrayList<ProductRating> list, double value, boolean less)
+    public static void filterProductRating(ArrayList<ProductRating> list, double value, boolean less)
     {
-        //ArrayList<String> getAdjustedPrice() = new ArrayList<String>();
-        
-        
-    }*/
-    
+       ArrayList<ProductRating> filter = new ArrayList<ProductRating>();
+       
+       for(ProductRating listItem : list)
+       {
+           if((listItem.getAverage() < value) && (less == true))
+           {
+               filter.add(listItem);
+           }
+           else if((listItem.getAverage() >= value) && (less == false))
+           {
+               filter.add(listItem);
+           }
+       }
+    }
 }

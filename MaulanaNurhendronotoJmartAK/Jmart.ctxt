@@ -1,11 +1,6 @@
 #BlueJ class context
 comment0.target=Jmart
-comment0.text=\r\n\ JMart\ Praktikum\ Modul\ 1,\ 2\r\n\r\n\ @author\ Maulana\ Nurhendronoto\ (2006577542)\r\n\ @\r\n
+comment0.text=\r\n\ JMart\ Praktikum\ Modul\ 1,\ 2,\ 3,\ 4\r\n\r\n\ @author\ Maulana\ Nurhendronoto\ (2006577542)\r\n\ @\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-comment2.params=
-comment2.target=Product\ createProduct()
-comment2.text=public\ static\ Product\ create()\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ return\ new\ Product("Sepeda",\ 100,\ true,\ new\ PriceTag(100.0),\ ProductCategory.AUTOMOTIVE);\r\n}
-comment3.params=
-comment3.target=Coupon\ createCoupon()
-numComments=4
+numComments=2

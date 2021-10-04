@@ -13,41 +13,53 @@ package MaulanaNurhendronotoJmartAK;
 public class PriceTag
 {
     public static double COMMISSION_MULTIPLIER = 0.05;
-    public static double BOTTOM_PRICE = 20000;
-    public double BOTTOM_FEE = 1000;
-    static double discount;
-    static double price;
+    public static double BOTTOM_PRICE = 20000.0;
+    public static double BOTTOM_FEE= 1000.0;
+    public double discount;
+    public double price;
     
-    public PriceTag(double price){
+    public PriceTag(double price)
+    {
         this.price = price;
-        this.discount = 0.0;
+        discount = 0.0;
     }
     
-    public PriceTag(double price, double discount){
+    public PriceTag(double price, double discount)
+    {
         this.price = price;
         this.discount = discount;
     }
     
-    public double getAdjustedPrice(){
+    public double getAdjustedPrice()
+    {
         return getDiscountedPrice() + getAdminFee();
     }
     
-    public double getAdminFee(){
-        if(getAdjustedPrice() < BOTTOM_PRICE){
-            return BOTTOM_FEE;
+    public double getAdminFee()
+    {
+        if(getAdjustedPrice() < BOTTOM_PRICE)
+        {
+            return COMMISSION_MULTIPLIER * getDiscountedPrice();
         }
-        else{
-            return getAdjustedPrice() - (COMMISSION_MULTIPLIER*getAdjustedPrice());
-            
+        else
+        {
+            return BOTTOM_FEE;
         }
     }
     
-    private double getDiscountedPrice(){
-        if(discount >= 100.0){
-            return 0;
+    private double getDiscountedPrice()
+    {
+        if(discount > 100.0)
+        {
+            return 100.0;
         }
-        else{
-            return (double) (price - (discount * price));
+        else if(discount == 100.0)
+        {
+            return 0.0;
+        }
+        else
+        {
+            return (double)(price - (discount*price));
         }
     }
 }

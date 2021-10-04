@@ -1,5 +1,6 @@
 package MaulanaNurhendronotoJmartAK;
 
+import MaulanaNurhendronotoJmartAK.Shipment.MultiDuration;
 
 /**
  * Jmart Praktikum Modul 2
@@ -9,54 +10,44 @@ package MaulanaNurhendronotoJmartAK;
  */
 public class Product extends Recognizable implements FileParser
 {
-    private static int idCounter = 0;
     public String name;
     public int weight;
     public boolean conditionUsed;
-    public ProductCategory category;
     public PriceTag priceTag;
+    public ProductCategory category;
     public ProductRating rating;
     public int storeId;
+    public MultiDuration multiDuration;
     
-    public Product(int weight, int storeId, String name, int id, boolean conditionedUsed, PriceTag priceTag, ProductCategory category)
+    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, MultiDuration multiDuration)
     {
         super(id);
-        this.name = name;
-        this.weight = weight;
-        this.conditionUsed = conditionedUsed;
-        this.priceTag = priceTag;
-        this.rating = new ProductRating();
         this.storeId = storeId;
-        
-    }
-    
-    public Product(int id, Store store, String name, int weight, boolean conitionUsed, PriceTag priceTag, ProductCategory category)
-    {
-        super(id);
         this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
         this.priceTag = priceTag;
+        this.category = category;
         this.rating = new ProductRating();
-        this.storeId = store.id;
-        
+        this.multiDuration = multiDuration;
     }
     
-    public boolean read (String name)
+    @Override
+    public boolean read(String name)
     {
         return false;
     }
-     
+    
     public String toString()
     {
-        name = "Harry Potter";
-        weight = 1;
-        conditionUsed = false;
-        //priceTag = priceTag.21000;
-        category = category.BOOK;
-        //rating = rating(0);
-        storeId = 1;
-        return null;   
+        String name = "Name: " + this.name + "\n";
+        String weight = "Weight: " + this.weight + "\n";
+        String conditionUsed = "conditionUsed: " + this.conditionUsed + "\n";
+        String priceTag = "priceTag: " + this.priceTag + "\n";
+        String category = "category: " + this.category + "\n";
+        String rating = "Weight: " + this.rating + "\n";
+        String storeId = "Weight: " + this.storeId + "\n";
+        
+        return name+weight+conditionUsed+priceTag+category+rating+storeId;
     }
-    
 }

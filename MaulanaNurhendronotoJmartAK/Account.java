@@ -27,9 +27,10 @@ public class Account extends Recognizable implements FileParser
     
     public String toString()
     {
-        name = "Ramadhan";
-        email = "ramdhanganteng@gmai.com";
-        password = "gu3G4ntEnG";
-        return null;
+        String name = "Name: " + this.name + "\n";
+        String email = "Weight: " + this.email + "\n";
+        String password = "conditionUsed: " + this.password + "\n";
+    
+        return name+email+password;
     }
 }

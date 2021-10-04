@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
  */
 public class Store extends Recognizable implements FileParser
 {
-    public static String REGEX_PHONE;
-    public static String REGEX_NAME;
+    public static String REGEX_PHONE = "^[0-9]{9,12}$";
+    public static String REGEX_NAME = "^[A-Z0-9a-z]{4,20}";
     public String name;
     public String address;
     public String phoneNumber;
@@ -40,18 +40,19 @@ public class Store extends Recognizable implements FileParser
     
     public String toString()
     {
-        name = "PT Madju Merdeka";
-        address = "Jl. Kukusan";
-        phoneNumber = "628777xxxx";
-        return null;
+        String name = "Name: " + this.name + "\n";
+        String address = "Weight: " + this.address + "\n";
+        String phoneNumber = "conditionUsed: " + this.phoneNumber + "\n";
+    
+        return name+address+phoneNumber;
     }
     
     public boolean validate()
     {
-        Pattern pattern = Pattern.compile("^[0-9]{9,12}$");
+        Pattern pattern = Pattern.compile(REGEX_PHONE);
         Matcher matcher = pattern.matcher(phoneNumber);
         boolean matchFound = matcher.find();
-        String res = matchFound ? "FOUND!" : "NOT FOUND!";
+        String res = matchFound ? "FOUND" : "NOT FOUND";
         if(res == "FOUND")
         {
             return true;
@@ -61,8 +62,18 @@ public class Store extends Recognizable implements FileParser
             return false;
         }
         
-        //Pattern checkName = Pattern.compile("^[A-Z0-9a-z]{4,20}");
-        //Matcher matchName = checkName.matcher(name);
+        /*Pattern p = Pattern.compile(REGEX_NAME);
+        Matcher matchName = p.matcher(name);
+        boolean checkMatch = matchName.find();
+        String check = matchFound ? "FOUND" : "NOT FOUND";
+        if(check == "FOUND")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }*/
           
     }
 }
