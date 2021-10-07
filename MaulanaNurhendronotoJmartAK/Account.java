@@ -43,8 +43,8 @@ public class Account extends Recognizable implements FileParser
     public String toString()
     {
         String name = "Name: " + this.name + "\n";
-        String email = "Weight: " + this.email + "\n";
-        String password = "conditionUsed: " + this.password + "\n";
+        String email = "Email: " + this.email + "\n";
+        String password = "Password: " + this.password + "\n";
     
         return name+email+password;
     }

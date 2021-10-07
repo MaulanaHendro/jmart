@@ -16,6 +16,8 @@ public class Jmart
         
         Account acc = new Account(10, "Maulana", "maulana1@gmail.com", "MangUjang1");
         System.out.println(acc.toString());
+        
+        System.out.println("Hello from Eclipse!");
     }
     
     
