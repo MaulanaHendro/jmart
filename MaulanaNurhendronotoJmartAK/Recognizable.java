@@ -1,13 +1,9 @@
 package MaulanaNurhendronotoJmartAK;
 
+//Praktikum Modul 5
+//Maulana Nurhendronoto (2006577542)
 
-/**
- * Praktikum Modul 3
- *
- * @Maulana Nurhendronoto (2006577542)
- * @version (a version number or a date)
- */
-public class Recognizable
+public class Recognizable<T extends Comparable<T>> 
 {
    public final int id;
    
@@ -16,9 +12,33 @@ public class Recognizable
        this.id = id;
    }
    
-   public boolean equals(Object recognizable)
+   public static <T> int setClosingId(Class<T> clazz, int id)
    {
-       if((recognizable instanceof Recognizable) && ((Recognizable)recognizable).id == id)
+	   if (Class.class.isAssignableFrom(Recognizable.class))
+	   {
+		   return 0;
+	   }
+	   else
+	   {
+		   return 1;
+	   }
+   }
+   
+   public static <T> int getClosingId(Class<T> clazz)
+   {
+	   if(Class.class.isAssignableFrom(Recognizable.class))
+	   {
+		   return 0;
+	   }
+	   else
+	   {
+		   return 1;
+	   }
+   }
+   
+   public boolean equals(Object other)
+   {
+       if((other instanceof Recognizable) && ((Recognizable<?>)other).id == id)
        {
            return true;
        }
@@ -28,7 +48,7 @@ public class Recognizable
        }
    }
    
-   public boolean equals(Recognizable recognizable)
+   public boolean equals(Recognizable<T> recognizable)
    {
        if(recognizable.id == id)
        {
@@ -38,5 +58,17 @@ public class Recognizable
        {
            return false;
        }
+   }
+   
+   public int compareto(Recognizable<T> other)
+   {
+	  if(other.id == id)
+	  {
+		  return 1;
+	  }
+	  else
+	  {
+		  return 0;
+	  }
    }
 }
