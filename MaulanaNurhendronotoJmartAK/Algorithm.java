@@ -11,7 +11,8 @@ public class Algorithm
 {
 	/*public static <T> List<T> collect(T[]array, T value)
 	{
-		
+		final Iterator<T>i = Arrays.stream(array).iterator();
+		return collect(i, value);
 	}
 	
 	public static <T> List<T> collect(Iterable<T>iterable, T value)
@@ -77,62 +78,72 @@ public class Algorithm
 	
 	public static <T> boolean exist(T[] array, T value)
 	{
-		return true;
+		final Iterator<T>i = Arrays.stream(array).iterator();
+		return exist(i, value);
 	}
 	
 	public static <T> boolean exist(Iterable<T>iterable, T value)
 	{
-		return false;
+		final Iterator<T>i = iterable.iterator();
+		return exist(i, value);
 	}
 	
 	public static <T> boolean exist(Iterator<T>iterator, T value)
 	{
-		return true;
+		final Predicate<T>pred = value::equals;
+		return exist(iterator, pred);
 	}
 	
 	public static<T> boolean exist(T[] array, Predicate<T> pred)
 	{
-		return false;
+		final Iterator<T>i = Arrays.stream(array).iterator();
+		return exist(i, pred);
 	}
 	
 	public static <T> boolean exist(Iterable<T>iterable, Predicate<T>pred)
 	{
-		return true;
+		final Iterator<T>i = iterable.iterator();
+		return exist(i, pred);
 	}
 	
 	public static <T> boolean exist(Iterator<T>iterator, Predicate<T>pred)
 	{
-		return false;
+		return exist(iterator, pred);
 	}
 	
 	public static <T> T find(T[] array, T value)
 	{
-		return null;
+		final Iterator<T>i = Arrays.stream(array).iterator();
+		return find(i, value);
 	}
 	
 	public static <T> T find(Iterable<T>iterable, T value)
 	{
-		return null;
+		final Iterator<T>i = iterable.iterator();
+		return find(i, value);
 	}
 	
 	public static <T> T find(Iterator<T>iterator, T value)
 	{
-		return null;
+		final Predicate<T>pred = value::equals;
+		return find(iterator, pred);
 	}
 	
 	public static <T> T find(T[] array, Predicate<T> pred)
 	{
-		return null;
+		final Iterator<T>i = Arrays.stream(array).iterator();
+		return find(i, pred);
 	}
 	
 	public static <T> T find(Iterable<T>iterable, Predicate<T>pred)
 	{
-		return null;
+		final Iterator<T>i = iterable.iterator();
+		return find(i, pred);
 	}
 	
 	public static <T> T find(Iterator<T>iterator, Predicate<T>pred)
 	{
-		return null;
+		return find(iterator, pred);
 	}
 	
 	public static <T> T max(T first, T second)
@@ -214,7 +225,5 @@ public class Algorithm
 			return value;
 		}
 	}
-	
-
-	
+		
 }
