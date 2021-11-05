@@ -9,94 +9,88 @@ import java.util.Calendar;
  *
  * @Maulana Nurhendronoto (2006577542)
  */
-public class Shipment implements FileParser
+public class Shipment
 {
+	public static SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E, MM/dd/yyyy");
+    public static final Plan INSTANT = new Plan((byte)(1 << 0));
+    public static final Plan SAME_DAY = new Plan((byte)(1 << 1));
+    public static final Plan NEXT_DAY = new Plan((byte)(1 << 2));
+    public static final Plan REGULER = new Plan((byte)(1 << 3));
+    public static final Plan KARGO = new Plan((byte)(1 << 4));
     String address;
-    int shipmentCost;
-    Duration duration;
+    int cost;
+    byte plan;
     String receipt;
     
-    public Shipment(String address, int shipmentCost, Duration duration, String receipt)
+    public static class Plan
+    {
+    	public final byte bit;
+    	private Plan(byte bit)
+    	{
+    		this.bit = bit;
+    	}
+    }
+    
+    public Shipment(String address, int cost, byte plan, String receipt)
     {
         this.address = address;
-        this.shipmentCost = shipmentCost;
-        this.duration = duration;
+        this.plan = plan;
+        this.cost = cost;
         this.receipt = receipt;
-        
     }
-    
-    public boolean read(String content)
+     
+    public String getEstimatedArrival(Date reference)
     {
-        return false;
-    }
-    
-    public static class Duration
-    {
-        public static SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E, MM/dd/yyyy");
-        public static final Duration INSTANT = new Duration((byte)(1 << 0));
-        public static final Duration SAME_DAY = new Duration((byte)(1 << 1));
-        public static final Duration NEXT_DAY = new Duration((byte)(1 << 2));
-        public static final Duration REGULER = new Duration((byte)(1 << 3));
-        public static final Duration KARGO = new Duration((byte)(1 << 4));
-        public byte bit;
-        
-        private Duration(byte bit)
-        {
-            this.bit = bit;
-        }
-        
-        public String getEstimatedArrival(Date reference)
-        {
-            Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
             
-            if(this.bit == 1 << 0 || this.bit == 1 << 1)
-            {
-                return ESTIMATION_FORMAT.format(reference.getTime());
-            }
-            else if(this.bit == 1 << 2)
-            {
-                cal.setTime(reference);
-                cal.add(Calendar.DATE,1);
-                return ESTIMATION_FORMAT.format(cal);
-            }
-            else if(this.bit == 1 << 3)
-            {
-                cal.setTime(reference);
-                cal.add(Calendar.DATE,2);
-                return ESTIMATION_FORMAT.format(cal);
-            }
-            else
-            {
-                cal.setTime(reference);
-                cal.add(Calendar.DATE,5);
-                return ESTIMATION_FORMAT.format(cal);
-            }
+        if(this.plan == 1 << 0 || this.plan== 1 << 1)
+        {
+        	return ESTIMATION_FORMAT.format(reference.getTime());
         }
-    
+        else if(this.plan == 1 << 2)
+        {
+             cal.setTime(reference);
+             cal.add(Calendar.DATE,1);
+             return ESTIMATION_FORMAT.format(cal);
+        }
+        else if(this.plan == 1 << 3)
+        {
+             cal.setTime(reference);
+             cal.add(Calendar.DATE,2);
+             return ESTIMATION_FORMAT.format(cal);
+        }
+        else
+        {
+             cal.setTime(reference);
+             cal.add(Calendar.DATE,5);
+             return ESTIMATION_FORMAT.format(cal);
+        }
     }
     
-    public class MultiDuration
+    public boolean isDuration(Plan reference)
     {
-        byte bit;
-        
-        public MultiDuration(Duration...args)
-        {
-            for(Duration i: args)
-            {
-                this.bit |= i.bit;
-            }
-        }
-        
-        public boolean isDuration(Duration reference)
-        {
-            if((this.bit & reference.bit) == reference.bit)
-            {
-                return true;
-            }
-            else{
-                return false;
-            }
-            
-        }   
+    	if((reference.bit & this.plan) != 0)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
     }
+    
+    public boolean isDuration(byte object, Plan reference)
+    {
+    	if((reference.bit & object) != 0)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+    
+ 
+  
 }

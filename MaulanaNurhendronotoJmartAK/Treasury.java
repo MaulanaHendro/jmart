@@ -10,36 +10,23 @@ package MaulanaNurhendronotoJmartAK;
 //+ public, - private, _ static
 //constructor = cetakan kue
 
-public class PriceTag
+public class Treasury
 {
     public static double COMMISSION_MULTIPLIER = 0.05;
     public static double BOTTOM_PRICE = 20000.0;
     public static double BOTTOM_FEE= 1000.0;
-    public double discount;
-    public double price;
-    
-    public PriceTag(double price)
+
+
+    public double getAdjustedPrice(double price, double discount)
     {
-        this.price = price;
-        discount = 0.0;
+        return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
     
-    public PriceTag(double price, double discount)
+    public double getAdminFee(double price, double discount)
     {
-        this.price = price;
-        this.discount = discount;
-    }
-    
-    public double getAdjustedPrice()
-    {
-        return getDiscountedPrice() + getAdminFee();
-    }
-    
-    public double getAdminFee()
-    {
-        if(getAdjustedPrice() < BOTTOM_PRICE)
+        if(getAdjustedPrice(price, discount) < BOTTOM_PRICE)
         {
-            return COMMISSION_MULTIPLIER * getDiscountedPrice();
+            return COMMISSION_MULTIPLIER * getDiscountedPrice(price, discount);
         }
         else
         {
@@ -47,7 +34,7 @@ public class PriceTag
         }
     }
     
-    private double getDiscountedPrice()
+    private double getDiscountedPrice(double price, double discount)
     {
         if(discount > 100.0)
         {

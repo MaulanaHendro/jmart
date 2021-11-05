@@ -19,9 +19,8 @@ public class Coupon extends Recognizable
         DISCOUNT, REBATE
     }
     
-    public Coupon(int id, String name, int code, Type type, double cut, double minimum)
+    public Coupon(String name, int code, Type type, double cut, double minimum)
     {
-        super(id);
         this.name = name;
         this.code = code;
         this.type = type;
@@ -35,9 +34,9 @@ public class Coupon extends Recognizable
         return used;
     }
     
-    public boolean canApply(PriceTag priceTag)
+    public boolean canApply(Treasury treasury)
     {
-       if(priceTag.getAdjustedPrice() >= minimum && (used = false))
+       if(treasury.getAdjustedPrice(minimum, cut) >= minimum && (used = false))
        {
            return true;
        }
@@ -47,9 +46,9 @@ public class Coupon extends Recognizable
        }
     }
     
-    public double apply(PriceTag priceTag)
+    public double apply(Treasury treasury)
     {
         used = true;
-        return priceTag.getAdjustedPrice() - cut;
+        return treasury.getAdjustedPrice(minimum, cut) - cut;
     }
 }

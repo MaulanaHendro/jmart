@@ -3,13 +3,13 @@ package MaulanaNurhendronotoJmartAK;
 //Praktikum Modul 5
 //Maulana Nurhendronoto (2006577542)
 
-public class Recognizable implements Comparable<Recognizable>
+public abstract class Recognizable implements Comparable<Recognizable>
 {
    public final int id;
    
-   protected Recognizable(int id)
+   protected Recognizable()
    {
-       this.id = id;
+       this.id = 1;
    }
    
    public static <T> int setClosingId(Class<T> clazz, int id)

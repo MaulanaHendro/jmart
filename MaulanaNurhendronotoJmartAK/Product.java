@@ -1,6 +1,5 @@
 package MaulanaNurhendronotoJmartAK;
 
-import MaulanaNurhendronotoJmartAK.Shipment.MultiDuration;
 
 /**
  * Jmart Praktikum Modul 2
@@ -8,34 +7,27 @@ import MaulanaNurhendronotoJmartAK.Shipment.MultiDuration;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable implements FileParser
+public class Product extends Recognizable
 {
-    public String name;
-    public int weight;
-    public boolean conditionUsed;
-    public PriceTag priceTag;
+    public int accountId;
     public ProductCategory category;
-    public ProductRating rating;
-    public int storeId;
-    public MultiDuration multiDuration;
+    public boolean conditionUsed;
+    public double discount;
+    public String name;
+    public double price;
+    public byte shipmentPlans;
+    public int weight;
     
-    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, MultiDuration multiDuration)
+    public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans)
     {
-        super(id);
-        this.storeId = storeId;
-        this.name = name;
+    	this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
-        this.priceTag = priceTag;
         this.category = category;
-        this.rating = new ProductRating();
-        this.multiDuration = multiDuration;
-    }
-    
-    @Override
-    public boolean read(String name)
-    {
-        return false;
+        this.accountId = accountId;
+        this.price = price;
+        this.discount = discount;
+        this.shipmentPlans = shipmentPlans;
     }
     
     public String toString()
@@ -43,11 +35,12 @@ public class Product extends Recognizable implements FileParser
         String name = "Name: " + this.name + "\n";
         String weight = "Weight: " + this.weight + "\n";
         String conditionUsed = "conditionUsed: " + this.conditionUsed + "\n";
-        String priceTag = "priceTag: " + this.priceTag + "\n";
         String category = "category: " + this.category + "\n";
-        String rating = "Weight: " + this.rating + "\n";
-        String storeId = "Weight: " + this.storeId + "\n";
+        String accountId = "accountid: " + this.accountId + "\n";
+        String price = "price: " + this.price + "\n";
+        String discount = "discount: " + this.discount + "\n";
+        String shipmentPlans = "shipmentPlans: " + this.shipmentPlans + "\n";
         
-        return name+weight+conditionUsed+priceTag+category+rating+storeId;
+        return name+weight+conditionUsed+category+accountId+price+discount+shipmentPlans;
     }
 }

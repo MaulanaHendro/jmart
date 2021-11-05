@@ -8,25 +8,22 @@ import java.util.regex.Pattern;
  *
  * @Maulana Nurhendronoto (2006577542)
  */
-public class Account extends Recognizable implements FileParser
+public class Account extends Recognizable
 {
     public static String REGEX_EMAIL = "^\\w+([\\~*_&.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
+    public double balance;
     public String name;
     public String email;
     public String password;
+    public Store store;
     
-    public Account(int id, String name, String email, String password)
+    public Account(String name, String email, String password, double balance)
     {
-        super(id);
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-    
-    @Override
-    public boolean read (String content){
-        return false;
+        this.balance = balance;
     }
     
     public boolean validate()
@@ -38,14 +35,5 @@ public class Account extends Recognizable implements FileParser
         Matcher m = p.matcher(password);
         
         return m.matches() && match.matches();
-    }
-    
-    public String toString()
-    {
-        String name = "Name: " + this.name + "\n";
-        String email = "Email: " + this.email + "\n";
-        String password = "Password: " + this.password + "\n";
-    
-        return name+email+password;
     }
 }

@@ -6,16 +6,16 @@ package MaulanaNurhendronotoJmartAK;
  *
  * @Maulana Nurhendronoto
  */
-public class Payment extends Invoice implements Transactor
+public class Payment extends Invoice
 {
     public int productCount;
     public Shipment shipment;
     
     
-    public Payment(int id, int buyerId, int storeId, int productId, Shipment shipment)
+    public Payment(int buyerId, int productId, int productCount, Shipment shipment)
     {
-        super(id, buyerId, storeId);
-        this.productId = productId;
+    	super(buyerId, productId);
+        this.productCount = productCount;
         this.shipment = shipment;
     }
     
@@ -23,17 +23,5 @@ public class Payment extends Invoice implements Transactor
     public double getTotalPay()
     {
         return 0.0;
-    }
-    
-    @Override
-    public boolean validate()
-    {
-        return false;
-    }
-    
-    @Override
-    public Invoice perform()
-    {
-        return null;
     }
 }
