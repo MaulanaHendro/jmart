@@ -49,31 +49,12 @@ public class Store extends Recognizable implements FileParser
     
     public boolean validate()
     {
-        Pattern pattern = Pattern.compile(REGEX_PHONE);
-        Matcher matcher = pattern.matcher(phoneNumber);
-        boolean matchFound = matcher.find();
-        String res = matchFound ? "FOUND" : "NOT FOUND";
-        if(res == "FOUND")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
-        /*Pattern p = Pattern.compile(REGEX_NAME);
-        Matcher matchName = p.matcher(name);
-        boolean checkMatch = matchName.find();
-        String check = matchFound ? "FOUND" : "NOT FOUND";
-        if(check == "FOUND")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }*/
-          
+    	Pattern pattern = Pattern.compile(REGEX_PHONE);
+    	Matcher match = pattern.matcher(phoneNumber);
+    	
+    	Pattern p = Pattern.compile(REGEX_NAME);
+    	Matcher m = p.matcher(name);
+    	
+    	return m.matches() && match.matches();
     }
 }

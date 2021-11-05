@@ -3,7 +3,7 @@ package MaulanaNurhendronotoJmartAK;
 //Praktikum Modul 5
 //Maulana Nurhendronoto (2006577542)
 
-public class Recognizable<T extends Comparable<T>> 
+public class Recognizable implements Comparable<Recognizable>
 {
    public final int id;
    
@@ -38,7 +38,7 @@ public class Recognizable<T extends Comparable<T>>
    
    public boolean equals(Object other)
    {
-       if((other instanceof Recognizable) && ((Recognizable<?>)other).id == id)
+       if((other instanceof Recognizable) && ((Recognizable)other).id == id)
        {
            return true;
        }
@@ -48,9 +48,9 @@ public class Recognizable<T extends Comparable<T>>
        }
    }
    
-   public boolean equals(Recognizable<T> recognizable)
+   public boolean equals(Recognizable other)
    {
-       if(recognizable.id == id)
+       if(other.id == id)
        {
            return true;
        }
@@ -60,7 +60,7 @@ public class Recognizable<T extends Comparable<T>>
        }
    }
    
-   public int compareto(Recognizable<T> other)
+   public int compareto(Recognizable other)
    {
 	  if(other.id == id)
 	  {
@@ -71,4 +71,10 @@ public class Recognizable<T extends Comparable<T>>
 		  return 0;
 	  }
    }
+
+@Override
+public int compareTo(Recognizable o) {
+	// TODO Auto-generated method stub
+	return 0;
+}
 }
