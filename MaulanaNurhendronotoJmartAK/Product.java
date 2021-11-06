@@ -7,7 +7,7 @@ package MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Product extends Recognizable
+public class Product extends Seriazible
 {
     public int accountId;
     public ProductCategory category;

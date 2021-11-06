@@ -1,20 +1,36 @@
 package MaulanaNurhendronotoJmartAK;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //Praktikum Modul 5
 //Maulana Nurhendronoto (2006577542)
 
-public abstract class Recognizable implements Comparable<Recognizable>
+public abstract class Seriazible implements Comparable<Seriazible>
 {
-   public final int id;
+   public int id = 0;
+   private static Map<Class<?>, Integer> mapCounter = new HashMap();
    
-   protected Recognizable()
+   protected Seriazible()
    {
-       this.id = 1;
+	   Integer count = mapCounter.get(getClass());
+	   count = count == null ? 0 : count + 1;
+	   
+	   if(count == null)
+	   {
+		   mapCounter.put(getClass(), count);
+		   this.id = 0;
+	   }
+	   else
+	   {
+		   mapCounter.put(getClass(), count + 1);
+		   this.id = count + 1;
+	   }
    }
    
    public static <T> int setClosingId(Class<T> clazz, int id)
    {
-	   if (Class.class.isAssignableFrom(Recognizable.class))
+	   if (Class.class.isAssignableFrom(Seriazible.class))
 	   {
 		   return 0;
 	   }
@@ -26,7 +42,7 @@ public abstract class Recognizable implements Comparable<Recognizable>
    
    public static <T> int getClosingId(Class<T> clazz)
    {
-	   if(Class.class.isAssignableFrom(Recognizable.class))
+	   if(Class.class.isAssignableFrom(Seriazible.class))
 	   {
 		   return 0;
 	   }
@@ -38,7 +54,7 @@ public abstract class Recognizable implements Comparable<Recognizable>
    
    public boolean equals(Object other)
    {
-       if((other instanceof Recognizable) && ((Recognizable)other).id == id)
+       if((other instanceof Seriazible) && ((Seriazible)other).id == id)
        {
            return true;
        }
@@ -48,7 +64,7 @@ public abstract class Recognizable implements Comparable<Recognizable>
        }
    }
    
-   public boolean equals(Recognizable other)
+   public boolean equals(Seriazible other)
    {
        if(other.id == id)
        {
@@ -60,7 +76,7 @@ public abstract class Recognizable implements Comparable<Recognizable>
        }
    }
    
-   public int compareto(Recognizable other)
+   public int compareto(Seriazible other)
    {
 	  if(other.id == id)
 	  {
@@ -73,7 +89,7 @@ public abstract class Recognizable implements Comparable<Recognizable>
    }
 
 @Override
-public int compareTo(Recognizable o) {
+public int compareTo(Seriazible o) {
 	// TODO Auto-generated method stub
 	return 0;
 }

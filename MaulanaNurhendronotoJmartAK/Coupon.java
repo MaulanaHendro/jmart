@@ -7,7 +7,7 @@ package MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Coupon extends Recognizable
+public class Coupon extends Seriazible
 {
     public final String name;
     public final int code;

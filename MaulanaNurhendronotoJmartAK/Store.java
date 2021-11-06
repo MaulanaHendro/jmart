@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Store extends Recognizable
+public class Store extends Seriazible
 {
     public static final String REGEX_PHONE = "^[0-9]{9,12}$";
     public static final String REGEX_NAME = "^[A-Z0-9a-z]{4,20}";

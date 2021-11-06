@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
  * @author Maulana Nurhendronoto
  * @version (a version number or a date)
  */
-public class Complaint extends Recognizable
+public class Complaint extends Seriazible
 {
     public String desc;
     public Date date;

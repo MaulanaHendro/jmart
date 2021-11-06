@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @Maulana Nurhendronoto
  */
-public abstract class Invoice extends Recognizable
+public abstract class Invoice extends Seriazible
 {
     public final Date date;
     public int buyerId;
