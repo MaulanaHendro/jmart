@@ -1,11 +1,14 @@
 package MaulanaNurhendronotoJmartAK;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 /**
  * JMart Praktikum Modul 1, 2, 3, 4, 5, 6
@@ -15,35 +18,41 @@ import com.google.gson.*;
  */
 public class Jmart
 {
-	class Country
+	public static List<Product> filterByAccountId(List<Product>list, int accountId, int page, int pageSize)
 	{
-		public String name;
-		public int population;
-		public List<String> listOfStates;
+		List<Product> returnAccountId = new ArrayList<Product>();
+		return returnAccountId;
 	}
 	
-	public static void main(String[] args)
+	public static List<Product> filterByCategory(List<Product>list, ProductCategory category)
 	{
-		String filepath = "C:\\Users\\USER\\Documents\\Hendro\\Java Programming BlueJ\\jmart\\city.json";
-		Gson gson = new Gson();
-		try
+		List<Product>returnCategory = new ArrayList<Product>();
+		for(Product product : list)
 		{
-			BufferedReader br = new BufferedReader(new FileReader(filepath));
-			Country input = gson.fromJson(br,  Country.class);
-			System.out.println("name: " + input.name);
-			System.out.println("population: " + input.population);
-			System.out.println("states:");
-			input.listOfStates.forEach(state -> System.out.println(state));
+			if(product.category.equals(category))
+			{
+				returnCategory.add(product);
+			}
 		}
-		catch (IOException e)
+		return returnCategory;
+	}
+	
+	public static List<Product> filterByName(List<Product>list, String search, int page, int pageSize)
+	{
+		List<Product>returnName = new ArrayList<Product>();
+		for(Product product : list)
 		{
-			e.printStackTrace();
+			if(product.name.equals(search))
+			{
+				returnName.add(product);
+			}
 		}
+		return returnName;
 	}
 	
 	public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice)
 	{
-		List<Product> result = new ArrayList<Product>();
+		List<Product> returnPrice = new ArrayList<Product>();
 		for(Product product : list)
 		{
 			if(minPrice <= 0.0 && product.price < minPrice)
@@ -54,9 +63,68 @@ public class Jmart
 			{
 				continue;
 			}
-			result.add(product);
+			returnPrice.add(product);
 		}
-		return result;
+		return returnPrice;
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("account id: " + new Account(null, null, null, -1).id);
+		System.out.println("account id: " + new Account(null, null, null, -1).id);
+		System.out.println("account id: " + new Account(null, null, null, -1).id);
+
+		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+		System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
+		
+		try
+		{
+			List<Product>list = read("C:\\Users\\USER\\Documents\\Hendro\\Java Programming BlueJ\\jmart\\randomProductList.json");
+			List<Product>filterName = filterByName(list, "gtx", 1, 5);
+			filterName.forEach(product -> System.out.println(product.name));
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+		
+		try
+		{
+			List<Product>list = read("C:\\Users\\USER\\Documents\\Hendro\\Java Programming BlueJ\\jmart\\randomProductList.json");
+			List<Product>filterAccountId = filterByAccountId(list, 1, 0, 5);
+			filterAccountId.forEach(product -> System.out.println(product.name));
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+		
+		try
+		{
+			List<Product>list = read("C:\\Users\\USER\\Documents\\Hendro\\Java Programming BlueJ\\jmart\\randomProductList.json");
+			List<Product>filtered = filterByPrice(list, 13000.0, 20000.0);
+			filtered.forEach(product -> System.out.println(product.price));
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace();
+		}
+	}
+	
+	private static List<Product>paginate(List<Product>list, int page, int pageSize, Predicate<Product>pred)
+	{
+		return list;
+	}
+	
+	public static List<Product>read(String filepath) throws FileNotFoundException
+	{
+		Gson gson = new Gson();
+		Type userListType = new TypeToken<ArrayList<Product>>() {
+		}.getType();
+		BufferedReader br = new BufferedReader(new FileReader(filepath));
+		List<Product> returnList = gson.fromJson(br,  userListType);
+		return returnList;
 	}
 
 }
