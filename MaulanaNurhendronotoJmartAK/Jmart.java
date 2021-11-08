@@ -21,6 +21,13 @@ public class Jmart
 	public static List<Product> filterByAccountId(List<Product>list, int accountId, int page, int pageSize)
 	{
 		List<Product> returnAccountId = new ArrayList<Product>();
+		for(Product product : list)
+		{
+			if(accountId == product.accountId)
+			{
+				returnAccountId.add(product);
+			}
+		}
 		return returnAccountId;
 	}
 	
