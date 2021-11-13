@@ -61,7 +61,7 @@ public class Jmart
 	
 	public static void main(String[] args)
 	{
-		System.out.println("account id: " + new Account(null, null, null, -1).id);
+		/*System.out.println("account id: " + new Account(null, null, null, -1).id);
 		System.out.println("account id: " + new Account(null, null, null, -1).id);
 		System.out.println("account id: " + new Account(null, null, null, -1).id);
 
@@ -100,7 +100,7 @@ public class Jmart
 		catch(Throwable t)
 		{
 			t.printStackTrace();
-		}
+		}*/
 	}
 	
 	private static List<Product>paginate(List<Product>list, int page, int pageSize, Predicate<Product>pred)

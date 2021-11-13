@@ -16,6 +16,11 @@ public class JsonTable<T> extends Vector <Object>
 	public JsonTable(Class<T>clazz, String filepath) throws IOException
 	{
 		this.filepath = filepath;
+		@SuppressWarnings("unchecked")
+		Class<T[]> array = (Class<T[]>) Array.newInstance(clazz, 0).getClass();
+		T[] result = JsonTable.ReadJson(array, filepath);
+		Collections.addAll(this,  result);
+		
 	}
 	
 	public static <T> T ReadJson(Class<T>clazz, String filepath) throws FileNotFoundException
@@ -43,7 +48,7 @@ public class JsonTable<T> extends Vector <Object>
 			String filepath = "account.json";
 			
 			JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
-			//tableAccount.add(new Account("name", "email", "password"));
+			tableAccount.add(new Account("name", "email", "password"));
 			tableAccount.writeJson();
 			
 			tableAccount = new JsonTable<>(Account.class, filepath);
