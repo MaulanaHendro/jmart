@@ -20,15 +20,7 @@ public class Jmart
 {
 	public static List<Product> filterByAccountId(List<Product>list, int accountId, int page, int pageSize)
 	{
-		List<Product> returnAccountId = new ArrayList<Product>();
-		for(Product product : list)
-		{
-			if(accountId == product.accountId)
-			{
-				returnAccountId.add(product);
-			}
-		}
-		return returnAccountId;
+		return paginate(list, page, pageSize, product -> product.accountId == accountId);
 	}
 	
 	public static List<Product> filterByCategory(List<Product>list, ProductCategory category)
@@ -46,15 +38,7 @@ public class Jmart
 	
 	public static List<Product> filterByName(List<Product>list, String search, int page, int pageSize)
 	{
-		List<Product>returnName = new ArrayList<Product>();
-		for(Product product : list)
-		{
-			if(product.name.equals(search))
-			{
-				returnName.add(product);
-			}
-		}
-		return returnName;
+		return paginate(list, page, pageSize, product -> product.name.toLowerCase().contains(search.toLowerCase()));
 	}
 	
 	public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice)
@@ -100,7 +84,7 @@ public class Jmart
 		{
 			List<Product>list = read("C:\\Users\\USER\\Documents\\Hendro\\Java Programming BlueJ\\jmart\\randomProductList.json");
 			List<Product>filterAccountId = filterByAccountId(list, 1, 0, 5);
-			filterAccountId.forEach(product -> System.out.println(product.name));
+			filterAccountId.forEach(product -> System.out.println(product.accountId));
 		}
 		catch(Throwable t)
 		{
@@ -121,7 +105,26 @@ public class Jmart
 	
 	private static List<Product>paginate(List<Product>list, int page, int pageSize, Predicate<Product>pred)
 	{
-		return list;
+		int iteration = 0;
+		int occurence = 0;
+		int startId = page * pageSize;
+		List<Product>pageList = new ArrayList<>(pageSize);
+		
+		for(; iteration < list.size() && occurence < startId; iteration++)
+		{
+			if(pred.predicate(list.get(iteration)))
+			{
+				iteration++;
+			}
+		}
+		for(int i = iteration; i < list.size() && pageList.size() < pageSize; i++)
+		{
+			if(pred.predicate(list.get(i)))
+			{
+				pageList.add(list.get(i));
+			}
+		}
+		return pageList;
 	}
 	
 	public static List<Product>read(String filepath) throws FileNotFoundException
