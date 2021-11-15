@@ -8,17 +8,37 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+
+import MaulanaNurhendronotoJmartAK.Payment.Record;
+
 import java.lang.reflect.Type;
 
 /**
- * JMart Praktikum Modul 1, 2, 3, 4, 5, 6
+ * JMart Praktikum Modul 1, 2, 3, 4, 5, 6, 7
  *
  * @author Maulana Nurhendronoto (2006577542)
  * @
  */
 public class Jmart
 {
-	public static List<Product> filterByAccountId(List<Product>list, int accountId, int page, int pageSize)
+	static long DELIVERED_LIMIT_MS = 1;
+	static long ON_DELIVERY_LIMIT_MS = 2;
+	static long ON_PROGRESS_LIMIT_MS = 3;
+	static long WAITING_CONF_LIMIT_MS = 4;
+	
+	public static void main(String[] args)
+	{
+		System.out.println("Hellow world");
+	}
+	
+	public static boolean paymentTimeKeeper(Payment payment)
+	{
+		long start = System.currentTimeMillis();
+		
+		return false;
+	}
+	
+	/*public static List<Product> filterByAccountId(List<Product>list, int accountId, int page, int pageSize)
 	{
 		return paginate(list, page, pageSize, product -> product.accountId == accountId);
 	}
@@ -100,7 +120,7 @@ public class Jmart
 		catch(Throwable t)
 		{
 			t.printStackTrace();
-		}*/
+		}
 	}
 	
 	private static List<Product>paginate(List<Product>list, int page, int pageSize, Predicate<Product>pred)
@@ -135,6 +155,6 @@ public class Jmart
 		BufferedReader br = new BufferedReader(new FileReader(filepath));
 		List<Product> returnList = gson.fromJson(br,  userListType);
 		return returnList;
-	}
+	}*/
 
 }

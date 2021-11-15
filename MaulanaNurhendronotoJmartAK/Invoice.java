@@ -17,31 +17,22 @@ public abstract class Invoice extends Seriazible
     public int complaintId;
     public Rating rating;
     public Status status;
-    ArrayList<Record> history;
-    public enum Status{
-        WAITING_CONFIRMATION, CANCELLED, ON_PROGRESS, ON_DELIVERY, COMPLAINT, FINISHED, FAILED
-    }
-    public enum Rating{
-        NONE, BAD, NEUTRAL, GOOD
-    }
     
-    protected Invoice(int buyerId, int productId)
-    {
-        this.buyerId = buyerId;
-        this.productId = productId;
-        this.complaintId = -1;
-        this.date = new Date();
-        rating = Rating.NONE;
-        status = Status.WAITING_CONFIRMATION;
-    }
-    
-    public abstract double getTotalPay();
-    
-    public class Record
-    {
-        public Status status;
-        public Date date;
-        public String message;   
+    public static enum Status{
+        WAITING_CONFIRMATION,CANCELED, ON_PROGRESS, ON_DELIVERY, COMPLAINT, FINISHED, FAILED;
     }
 
+    public static enum Rating{
+        NONE,BAD,NEUTRAL,GOOD;
+    }
+
+    protected Invoice(int buyerId, int productId){
+        this.buyerId = buyerId;
+        this.productId = productId;
+        this.date = new Date();
+        this.complaintId = 1;
+        this.rating = Rating.NONE;
+    }
+
+    public abstract double getTotalPay(Product product);
 }
