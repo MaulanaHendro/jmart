@@ -1,5 +1,6 @@
 package com.MaulanaNurhendronotoJmartAK;
 
+import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
  * Praktikum Modul 2 Post Test
@@ -7,7 +8,7 @@ package com.MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Coupon extends Seriazible
+public class Coupon extends Serializable
 {
     public final String name;
     public final int code;

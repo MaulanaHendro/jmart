@@ -1,6 +1,9 @@
 package com.MaulanaNurhendronotoJmartAK;
 
 import java.util.Date;
+
+import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
+
 import java.util.Calendar;
 import java.util.ArrayList;
 
@@ -9,7 +12,7 @@ import java.util.ArrayList;
  *
  * @Maulana Nurhendronoto
  */
-public abstract class Invoice extends Seriazible
+public abstract class Invoice extends Serializable
 {
     public final Date date;
     public int buyerId;

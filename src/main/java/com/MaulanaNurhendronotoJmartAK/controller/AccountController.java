@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/account")
 
-public class AccountController 
+public class AccountController
 {
 	@GetMapping
 	String index() { return "account page"; }

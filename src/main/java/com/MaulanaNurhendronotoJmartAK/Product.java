@@ -1,5 +1,6 @@
 package com.MaulanaNurhendronotoJmartAK;
 
+import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
  * Jmart Praktikum Modul 2
@@ -7,7 +8,7 @@ package com.MaulanaNurhendronotoJmartAK;
  * @Maulana Nurhendronoto (2006577542)
  * @version (a version number or a date)
  */
-public class Product extends Seriazible
+public class Product extends Serializable
 {
     public int accountId;
     public ProductCategory category;

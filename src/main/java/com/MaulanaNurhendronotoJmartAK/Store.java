@@ -3,13 +3,15 @@ package com.MaulanaNurhendronotoJmartAK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
+
 /**
  * Praktikum Modul 3
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Store extends Seriazible
+public class Store extends Serializable
 {
     public static final String REGEX_PHONE = "^[0-9]{9,12}$";
     public static final String REGEX_NAME = "^[A-Z0-9a-z]{4,20}";

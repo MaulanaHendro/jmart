@@ -1,6 +1,9 @@
 package com.MaulanaNurhendronotoJmartAK;
 
 import java.util.Date;
+
+import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -9,7 +12,7 @@ import java.text.SimpleDateFormat;
  * @author Maulana Nurhendronoto
  * @version (a version number or a date)
  */
-public class Complaint extends Seriazible
+public class Complaint extends Serializable
 {
     public String desc;
     public Date date;
