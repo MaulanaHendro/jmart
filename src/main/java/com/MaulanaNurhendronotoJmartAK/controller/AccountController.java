@@ -1,6 +1,7 @@
 package com.MaulanaNurhendronotoJmartAK.controller;
 
 import com.MaulanaNurhendronotoJmartAK.Account;
+import com.MaulanaNurhendronotoJmartAK.Store;
 import com.MaulanaNurhendronotoJmartAK.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,6 +16,7 @@ public abstract class AccountController implements BasicGetController<Account>
 	public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
 	public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
 	public static JsonTable<Account> accountTable;
+	
 	
 	@GetMapping
 	String index() { return "account page"; }
@@ -42,6 +44,7 @@ public abstract class AccountController implements BasicGetController<Account>
 	{
 		return new Account(name, email, password);
 	}
+	
 	
 	@Override
 	@GetMapping("/{id}")

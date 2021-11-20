@@ -30,7 +30,7 @@ public interface BasicGetController<T extends Serializable>
 	@GetMapping("/page")
 	public default List<T> getPage(int page, int pageSize)
 	{
-		return null;
+		return getJsonTable().subList(page, pageSize);
 	}
 
 }
