@@ -24,9 +24,7 @@ public abstract class PaymentController implements BasicGetController<Payment>
 	
 	public boolean cancel(int id)
 	{
-		retrun true;
+		return true;
 	}
-	
-	public Payment create
 
 }
