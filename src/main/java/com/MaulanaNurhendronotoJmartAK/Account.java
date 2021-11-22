@@ -20,12 +20,12 @@ public class Account extends Serializable
     public String password;
     public Store store;
     
-    public Account(String name, String email, String password/* double balance*/)
+    public Account(String name, String email, String password, double balance)
     {
         this.name = name;
         this.email = email;
         this.password = password;
-        //this.balance = balance;
+        this.balance = balance;
     }
     
     public boolean validate()
