@@ -1,8 +1,8 @@
 package com.MaulanaNurhendronotoJmartAK;
 
 import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.*;
 import java.util.List;
 import java.util.Comparator;
 
@@ -445,6 +445,69 @@ public class Algorithm
 	public static <T> T min(Iterator<T>iterator, Comparator<? super T>comparator)
 	{
 		return null;
+	}
+	
+	public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T>pred)
+	{
+		List<T> hasil = new ArrayList<T>();
+		if(pred.equals(true))
+		{
+			for(int i = ((array.length/pageSize) * page); i < ((array.length/pageSize)*page)+pageSize; i++)
+			{
+				hasil.add(array[i]);
+			}
+		}
+		return hasil;
+	}
+	
+	public static <T> List<T> paginate(Iterable<T>iterable, int page, int pageSize, Predicate<T>pred)
+	{
+		List<T> hasil = new ArrayList<T>();
+		int iterableSize = 0;
+		for(Object i : iterable)
+		{
+			iterableSize++;
+		}
+		
+		int start = (iterableSize/pageSize) * page;
+		int finish = start + pageSize;
+		int counter = 0;
+		
+		for(T each : iterable)
+		{
+			if(counter >= start && counter < finish)
+			{
+				hasil.add(each);
+			}
+			counter++;
+		}
+		return hasil;
+	}
+	
+	public static <T> List<T> paginate(Iterator<T>iterator, int page, int pageSize, Predicate<T>pred)
+	{
+		List<T> hasil = new ArrayList<T>();
+		int iteratorSize = 0;
+		while(iterator.hasNext())
+		{
+			iteratorSize++;
+			iterator.next();
+		}
+		
+		int start = (iteratorSize/pageSize) * page;
+		int finish = start + pageSize;
+		int counter = 0;
+		
+		while(iterator.hasNext())
+		{
+			if(counter >= start && counter < finish)
+			{
+				T each = iterator.next();
+				hasil.add(each);
+			}
+			counter++;
+		}
+		return hasil;
 	}
 		
 }

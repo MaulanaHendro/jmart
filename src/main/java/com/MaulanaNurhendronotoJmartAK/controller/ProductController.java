@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.MaulanaNurhendronotoJmartAK.Algorithm;
 import com.MaulanaNurhendronotoJmartAK.Jmart;
 import com.MaulanaNurhendronotoJmartAK.Payment;
 import com.MaulanaNurhendronotoJmartAK.Product;
@@ -56,7 +57,7 @@ public class ProductController implements BasicGetController<Product>
 	@PostMapping("/{id}/store")
 	List<Product> getproductByStore(@RequestParam int id, @RequestParam int page, @RequestParam int pageSize)
 	{
-		return null;
+		return Algorithm.paginate(productTable, page, pageSize, pred->pred.accountId == id);
 	}
 	
 	@GetMapping("/getFiltered")
@@ -74,8 +75,4 @@ public class ProductController implements BasicGetController<Product>
 		return null;
 		
 	}
-	
-	
-
-
 }

@@ -17,12 +17,12 @@ public class Treasury
     public static double BOTTOM_FEE= 1000.0;
 
 
-    public double getAdjustedPrice(double price, double discount)
+    public static double getAdjustedPrice(double price, double discount)
     {
         return getDiscountedPrice(price, discount) + getAdminFee(price, discount);
     }
     
-    public double getAdminFee(double price, double discount)
+    public static double getAdminFee(double price, double discount)
     {
         if(getAdjustedPrice(price, discount) < BOTTOM_PRICE)
         {
@@ -34,7 +34,7 @@ public class Treasury
         }
     }
     
-    private double getDiscountedPrice(double price, double discount)
+    private static double getDiscountedPrice(double price, double discount)
     {
         if(discount > 100.0)
         {

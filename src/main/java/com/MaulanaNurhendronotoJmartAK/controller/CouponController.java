@@ -1,10 +1,13 @@
 package com.MaulanaNurhendronotoJmartAK.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.MaulanaNurhendronotoJmartAK.Algorithm;
 import com.MaulanaNurhendronotoJmartAK.Coupon;
 import com.MaulanaNurhendronotoJmartAK.dbjson.JsonAutowired;
 import com.MaulanaNurhendronotoJmartAK.dbjson.JsonTable;
@@ -34,7 +37,7 @@ public class CouponController implements BasicGetController<Coupon>
 		return false;
 	}
 	
-	/*@GetMapping("/{id}/canApply")
+	@GetMapping("/{id}/canApply")
 	public boolean canApply(@RequestParam int id, @RequestParam double price, @RequestParam double discount)
 	{
 		for(Coupon coupon : getJsonTable())
@@ -45,5 +48,11 @@ public class CouponController implements BasicGetController<Coupon>
 			}
 		}
 		return false;
-	}*/
+	}
+	
+	
+	public List<Coupon> getAvailable(int page, int pageSize)
+	{
+		return Algorithm.paginate(couponTable, page, pageSize, pred->!pred.isUsed());
+	}
 }

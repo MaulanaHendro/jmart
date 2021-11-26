@@ -16,7 +16,7 @@ public class Coupon extends Serializable
     public final Type type;
     public final double minimum;
     private boolean used;
-    public enum Type{
+    public static enum Type{
         DISCOUNT, REBATE
     }
     
@@ -37,7 +37,7 @@ public class Coupon extends Serializable
     
     public boolean canApply(Treasury treasury)
     {
-       if(treasury.getAdjustedPrice(minimum, cut) >= minimum && (used = false))
+       if(Treasury.getAdjustedPrice(minimum, cut) >= minimum && (used = false))
        {
            return true;
        }
@@ -47,9 +47,26 @@ public class Coupon extends Serializable
        }
     }
     
-    public double apply(Treasury treasury)
+
+    public double Apply(Treasury treasury) 
     {
         used = true;
-        return treasury.getAdjustedPrice(minimum, cut) - cut;
+        switch (type) {
+            case REBATE:
+                return (Treasury.getAdjustedPrice(this.minimum, this.cut) - cut);
+            default:
+                return (Treasury.getAdjustedPrice(this.minimum, this.cut) * (1 - (cut / 100)));
+        }
     }
+
+    
+    public boolean canApply(double price, double discount)
+    {
+    	if((Treasury.getAdjustedPrice(price, discount) > minimum) && !used)
+    	{
+    		return true;
+    	}
+    	return false;
+    }
+    
 }

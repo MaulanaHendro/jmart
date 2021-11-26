@@ -33,7 +33,7 @@ public abstract class Invoice extends Serializable
         this.buyerId = buyerId;
         this.productId = productId;
         this.date = new Date();
-        this.complaintId = 1;
+        this.complaintId = -1;
         this.rating = Rating.NONE;
     }
 
