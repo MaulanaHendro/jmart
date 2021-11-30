@@ -27,7 +27,7 @@ public class PaymentController implements BasicGetController<Payment>
 	public static JsonTable<Payment> paymentTable;
 	public static ObjectPoolThread<Payment> poolThread;
 	
-	@PostMapping("/{id}/cancel")
+	@PostMapping("/{id}/accept")
 	boolean accept(@RequestParam int id)
 	{
 		return false;
