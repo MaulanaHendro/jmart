@@ -51,6 +51,9 @@ public class AccountController implements BasicGetController<Account>{
 		return null;
 	}
 	
+	@GetMapping
+	String index() { return "account page"; }
+	
 	@PostMapping("/register")
 	public Account Register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
 		boolean emailCheck = REGEX_PATTERN_EMAIL.matcher(email).find();

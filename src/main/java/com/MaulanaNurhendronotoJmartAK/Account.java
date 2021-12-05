@@ -12,7 +12,7 @@ import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
  */
 public class Account extends Serializable
 {
-    public static String REGEX_EMAIL = "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
+    public static final String REGEX_EMAIL = "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
     public double balance;
     public String name;
