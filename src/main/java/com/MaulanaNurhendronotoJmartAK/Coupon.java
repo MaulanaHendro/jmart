@@ -3,10 +3,11 @@ package com.MaulanaNurhendronotoJmartAK;
 import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
- * Praktikum Modul 2 Post Test
+ * Coupon Class : 
+ * Store value of coupon; 
+ * return price after coupon is used
  *
- * @Maulana Nurhendronoto (2006577542)
- * @version (a version number or a date)
+ * @author Maulana Nurhendronoto
  */
 public class Coupon extends Serializable
 {

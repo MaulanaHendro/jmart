@@ -1,5 +1,11 @@
 package com.MaulanaNurhendronotoJmartAK;
 
+/**
+ * PhoneTopUp Class
+ * 
+ * @author Maulana Nurhendronoto
+ *
+ */
 public class PhoneTopUp extends Invoice 
 {
 	public String phoneNumber;

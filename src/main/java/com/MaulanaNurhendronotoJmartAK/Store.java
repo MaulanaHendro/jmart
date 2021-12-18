@@ -6,10 +6,11 @@ import java.util.regex.Pattern;
 import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
- * Praktikum Modul 3
+ * Store Class : 
+ * Store the value of store detail; 
+ * regex for phone number and name
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Maulana Nurhendronoto
  */
 public class Store extends Serializable
 {

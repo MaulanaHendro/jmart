@@ -2,10 +2,9 @@ package com.MaulanaNurhendronotoJmartAK;
 
 
 /**
- * Enumeration class ProductCategory - write a description of the enum class here
+ * Enumeration class ProductCategory - consist of product category
  *
- * @Maulana Nurhendronoto (2006577542)
- * @version (version number or date here)
+ * @author Maulana Nurhendronoto
  */
 public enum ProductCategory
 {

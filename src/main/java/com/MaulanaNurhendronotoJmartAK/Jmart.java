@@ -14,11 +14,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.lang.reflect.Type;
 @SpringBootApplication
+
 /**
- * JMart Praktikum Modul 1, 2, 3, 4, 5, 6, 7
+ * Jmart class : 
+ * Consist of main method
+ * 
+ * @author Maulana Nurhendronoto
  *
- * @author Maulana Nurhendronoto (2006577542)
- * @
  */
 public class Jmart
 {

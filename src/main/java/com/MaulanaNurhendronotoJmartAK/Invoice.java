@@ -8,9 +8,9 @@ import java.util.Calendar;
 import java.util.ArrayList;
 
 /**
- * Praktikum Modul 4 CS
+ * Invoice Class
  *
- * @Maulana Nurhendronoto
+ * @author Maulana Nurhendronoto
  */
 public abstract class Invoice extends Serializable
 {

@@ -3,10 +3,10 @@ package com.MaulanaNurhendronotoJmartAK;
 import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
- * Jmart Praktikum Modul 2
+ * Product Class : 
+ * Store the detail of product
  *
- * @Maulana Nurhendronoto (2006577542)
- * @version (a version number or a date)
+ * @author Maulana Nurhendronoto (2006577542)
  */
 public class Product extends Serializable
 {

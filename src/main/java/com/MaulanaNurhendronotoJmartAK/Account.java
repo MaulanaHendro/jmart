@@ -2,13 +2,15 @@ package com.MaulanaNurhendronotoJmartAK;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 
 /**
- * Praktikum Modul 3
+ * Account class : 
+ * Store the value of name, email, password, and balance;
+ * regex expression for email and password
+ * 
+ * @author Maulana Nurhendronoto
  *
- * @Maulana Nurhendronoto (2006577542)
  */
 public class Account extends Serializable
 {

@@ -7,11 +7,12 @@ import com.MaulanaNurhendronotoJmartAK.dbjson.Serializable;
 import java.text.SimpleDateFormat;
 
 /**
- * Write a description of class Complaint here.
- *
+ * Complaint Class : 
+ * Store value of desc and date; 
+ * 
  * @author Maulana Nurhendronoto
- * @version (a version number or a date)
  */
+
 public class Complaint extends Serializable
 {
     public String desc;

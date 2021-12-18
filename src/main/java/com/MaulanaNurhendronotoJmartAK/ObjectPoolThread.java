@@ -3,6 +3,13 @@ package com.MaulanaNurhendronotoJmartAK;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * ObjectPoolThread Class
+ * 
+ * @author Maulana Nurhendronoto
+ *
+ * @param <T>
+ */
 public class ObjectPoolThread<T> extends Thread 
 {
 	private boolean exitSignal;

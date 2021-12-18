@@ -5,509 +5,589 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
-//Praktikum Modul 5
-//Maulana Nurhendronoto (2006577542)
+/**
+ * Algorithm Class : 
+ * execute algorithm such as count, exist, find,
+ * max, min, collect, and paginate
+ * 
+ * @author Maulana Nurhendronoto
+ */
 
-public class Algorithm 
+public class Algorithm
 {
-	private Algorithm()
-	{
-		
-	}
-	public static <T> List<T> collect(T[]array, T value)
-	{
-		final Iterator<T>iter = Arrays.stream(array).iterator();
-		return collect(iter, value);
-	}
-	
-	public static <T> List<T> collect(Iterable<T>iterable, T value)
-	{
-		final Iterable<T>iter = (Iterable<T>) iterable.iterator();
-		return collect(iter, value);
-	}
-	
-	public static <T> List<T> collect(Iterator<T>iterator, T value)
-	{
-		final Predicate<T> predicate = value::equals;
-		return collect(iterator, value);
-	}
-	
-	public static <T> List<T> collect(T[]array, Predicate<T>pred)
-	{
-		final Iterator<T>iter = Arrays.stream(array).iterator();
-		return collect(iter, pred);
-	}
-	
-	public static <T> List<T> collect(Iterable<T>iterable, Predicate<T>pred)
-	{
-		return null;
-	}
-	
-	public static <T> List<T> collect(Iterator<T>iterator, Predicate<T>pred)
-	{
-		int count = 0;
-		while(iterator.hasNext())
-		{
-			count++;
-		}
-		final Predicate<T>predicate = pred::equals;
-		return collect(iterator, pred);
-	}
-	
-	public static <T> int count(T[] array, T value)
-	{
-		return array.length;
-	}
-	
-	public static <T> int count(Iterable<T>iterable, T value)
-	{
-		int i = 0;
-		for(Object obj : iterable)
-		{
-			i++;
-		}
-		return i;
-	}
-	
-	public static <T> int count (Iterator<T>iterator, T value)
-	{
-		int i = 0;
-		while(iterator.hasNext())
-		{
-			i++;
-		}
-		return i;
-	}
-	
-	public static <T> int count(T[] array, Predicate<T> pred)
-	{
-		int i = 0;
-		if(pred.equals(false))
-		{
-			return 0;
-		}
-		else
-		{
-			for(T arr : array)
-			{
-				i++;
-			}
-		}
-		return i;
-	}
-	
-	public static <T> int count(Iterable<T>iterable, Predicate<T> pred)
-	{
-		int i = 0;
-		if(pred.equals(false))
-		{
-			return 0;
-		}
-		else
-		{
-			for(T arr : iterable)
-			{
-				i++;
-			}
-		}
-		return i;
-	}
-	
-	public static <T> int count (Iterator<T>iterator, Predicate<T> pred)
-	{
-		int i = 0;
-		if(pred.equals(false))
-		{
-			return 0;
-		}
-		else
-		{
-			while(iterator.hasNext())
-			{
-				i++;
-			}
-		}
-		return i;
-	}
-	
-	public static <T> boolean exist(T[] array, T value)
-	{
-		for(T arr : array)
-		{
-			if(arr.equals(value))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static <T> boolean exist(Iterable<T>iterable, T value)
-	{
-		for(T arr : iterable)
-		{
-			if(arr.equals(value))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static <T> boolean exist(Iterator<T>iterator, T value)
-	{
-		while(iterator.hasNext())
-		{
-			if(iterator.next().equals(value))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static<T> boolean exist(T[] array, Predicate<T> pred)
-	{
-		for(T arr : array)
-		{
-			if(arr.equals(pred))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static <T> boolean exist(Iterable<T>iterable, Predicate<T>pred)
-	{
-		for(T arr : iterable)
-		{
-			if(arr.equals(pred))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static <T> boolean exist(Iterator<T>iterator, Predicate<T>pred)
-	{
-		while(iterator.hasNext())
-		{
-			if(iterator.next().equals(pred))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static <T> T find(T[] array, T value)
-	{
-		for(T arr : array)
-		{
-			if(arr.equals(value))
-			{
-				return arr;
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T find(Iterable<T>iterable, T value)
-	{
-		for(T arr : iterable)
-		{
-			if(arr.equals(value))
-			{
-				return arr;
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T find(Iterator<T>iterator, T value)
-	{
-		while(iterator.hasNext())
-		{
-			if(iterator.next().equals(value))
-			{
-				return iterator.next();
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T find(T[] array, Predicate<T> pred)
-	{
-		for(T arr : array)
-		{
-			if(arr.equals(pred))
-			{
-				return arr;
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T find(Iterable<T>iterable, Predicate<T>pred)
-	{
-		for(T arr : iterable)
-		{
-			if(arr.equals(pred))
-			{
-				return arr;
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T find(Iterator<T>iterator, Predicate<T>pred)
-	{
-		while(iterator.hasNext())
-		{
-			if(iterator.next().equals(pred))
-			{
-				return iterator.next();
-			}
-		}
-		return null;
-	}
-	
-	public static <T> T max(T first, T second)
-	{
-		if(first.hashCode() > second.hashCode())
-		{
-			return first;
-		}
-		else
-		{
-			return second;
-		}
-	}
-	
-	public static <T> T max(T[]array)
-	{
-		int max = 0;
-		T maxT = null;
-		for(T t : array)
-		{
-			if(t.hashCode() > max)
-			{
-				max = t.hashCode();
-				maxT = t;
-			}
-		}
-		return maxT;
-	}
-	
-	public static <T> T max(Iterable<T>iterable)
-	{
-		int max = 0;
-		T maxT = null;
-		for(T t : iterable)
-		{
-			if(t.hashCode() > max)
-			{
-				max = t.hashCode();
-				maxT = t;
-			}
-		}
-		return maxT;
-	}
-	
-	public static <T> T max(Iterator<T>iterator)
-	{
-		int max = 0;
-		T maxT = null;
-		while(iterator.hasNext())
-		{
-			if(iterator.next().hashCode() > max)
-			{
-				max = iterator.next().hashCode();
-				maxT = iterator.next();
-			}
-		}
-		return maxT;
-	}
-	
-	public static <T> T max(T first, T second, Comparator<? super T>comparator)
-	{
-		int result = ((Comparable<T>)first).compareTo(second);
-		return result <-1? second : first;
-	}
-	
-	public static <T> T max(T[]array, Comparator<? super T>comparator)
-	{
-		return null;
-	}
-	
-	public static <T> T max(Iterable<T>iterable, Comparator<? super T>comparator)
-	{
-		T maxT = null;
-		for(T t : iterable)
-		{
-			if(((Comparable<T>)maxT).compareTo(t) < 0)
-			{
-				maxT = t;
-			}
-		}
-		return maxT;
-	}
-	
-	public static <T> T max(Iterator<T>iterator, Comparator<? super T>comparator)
-	{
-		return null;
-	}
+    
+    private Algorithm()
+    {
+    }
 
-	public static <T> T min(T first, T second)
-	{
-		if(first.hashCode() < second.hashCode())
-		{
-			return first;
-		}
-		else
-		{
-			return second;
-		}
-	}
-	
-	public static <T> T min(T[]array)
-	{
-		int min = array[0].hashCode();
-		T minT = null;
-		for (T t : array)
-		{
-			if(t.hashCode() > min)
-			{
-				min = t.hashCode();
-				minT = t;
-			}
-		}
-		return minT;
-	}
-	
-	public static <T> T  min(Iterable<T>iterable)
-	{
-		int min = iterable.hashCode();
-		T minT = null;
-		for(T t : iterable)
-		{
-			if(t.hashCode() > min)
-			{
-				min = t.hashCode();
-				minT = t;
-			}
-		}
-		return minT;
-	}
-	
-	public static <T> T min(Iterator<T>iterator)
-	{
-		int min = iterator.next().hashCode();
-		T minT = null;
-		while(iterator.hasNext())
-		{
-			if(iterator.next().hashCode() > min)
-			{
-				min = iterator.next().hashCode();
-				minT = iterator.next();
-			}
-		}
-		return minT;
-	}
-	
-	public static <T> T min(T first, T second, Comparator<? super T>comparator)
-	{
-		int result = ((Comparable<T>)first).compareTo(second);
-		return result <-1? second : first;
-	}
-	
-	public static <T> T min(T[] array, Comparator<? super T>comparator)
-	{
-		return null;
-	}
-	
-	public static <T> T min(Iterable<T>iterable, Comparator<? super T>comparator)
-	{
-		T minT = null;
-		for(T t : iterable)
-		{
-			if(((Comparable<T>)minT).compareTo(t) > 0)
-			{
-				minT = t;
-			}
-		}
-		return minT;
-	}
-	
-	public static <T> T min(Iterator<T>iterator, Comparator<? super T>comparator)
-	{
-		return null;
-	}
-	
-	public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T>pred)
-	{
-		List<T> hasil = new ArrayList<T>();
-		if(pred.equals(true))
-		{
-			for(int i = ((array.length/pageSize) * page); i < ((array.length/pageSize)*page)+pageSize; i++)
-			{
-				hasil.add(array[i]);
-			}
-		}
-		return hasil;
-	}
-	
-	public static <T> List<T> paginate(Iterable<T>iterable, int page, int pageSize, Predicate<T>pred)
-	{
-		List<T> hasil = new ArrayList<T>();
-		int iterableSize = 0;
-		for(Object i : iterable)
-		{
-			iterableSize++;
-		}
-		
-		int start = (iterableSize/pageSize) * page;
-		int finish = start + pageSize;
-		int counter = 0;
-		
-		for(T each : iterable)
-		{
-			if(counter >= start && counter < finish)
-			{
-				hasil.add(each);
-			}
-			counter++;
-		}
-		return hasil;
-	}
-	
-	public static <T> List<T> paginate(Iterator<T>iterator, int page, int pageSize, Predicate<T>pred)
-	{
-		List<T> hasil = new ArrayList<T>();
-		int iteratorSize = 0;
-		while(iterator.hasNext())
-		{
-			iteratorSize++;
-			iterator.next();
-		}
-		
-		int start = (iteratorSize/pageSize) * page;
-		int finish = start + pageSize;
-		int counter = 0;
-		
-		while(iterator.hasNext())
-		{
-			if(counter >= start && counter < finish)
-			{
-				T each = iterator.next();
-				hasil.add(each);
-			}
-			counter++;
-		}
-		return hasil;
-	}
-		
+    /**
+     * Count method : 
+     * increment counter variable if predicate
+     * return true value
+     * @param array Array
+     * @param value
+     * @param <T> generic
+     * @return value after iteration
+     */
+    public static <T> int count(T[] array, T value)
+    {
+        final Iterator<T> var = Arrays.stream(array).iterator();
+        return count(var, value);
+    }
+
+    public static <T> int count(Iterable<T> iterable, T value) {
+        final Iterator <T> var = iterable.iterator();
+        return count(var, value);
+    }
+
+    public static <T> int count(Iterator<T> iterator, T value) {
+        final Predicate <T> var = value::equals;
+        return count(iterator, var);
+    }
+
+    public static <T> int count(T[] array, Predicate<T> pred) {
+        final Iterator<T> var = Arrays.stream(array).iterator();
+        return count(var, pred);
+    }
+
+    public static <T> int count(Iterable<T> iterable, Predicate<T> pred) {
+        final Iterator<T> var = iterable.iterator();
+        return count(var, pred);
+    }
+
+    public static <T> int count(Iterator<T> iterator, Predicate<T> pred) {
+        return count(iterator, pred);
+    }
+
+    /**
+     * Exist method : 
+     * to check whether an object is in an array or list
+     * 
+     * @param <T> generic
+     * @param array Array
+     * @param value
+     * @return true when object is found
+     */
+    public static <T> boolean exists(T[] array, T value)
+    {
+        final Iterator<T> var = Arrays.stream(array).iterator();
+        return exists(var, value);
+    }
+
+    public static <T> boolean exists(Iterable<T> iterable, T value)
+    {
+        final Iterator<T> var = iterable.iterator();
+        return exists(var, value);
+    }
+
+    public static <T> boolean exists(Iterator<T> iterator, T value)
+    {
+        final Predicate <T> var = value::equals;
+        return exists(iterator, var);
+    }
+
+    public static <T> boolean exists(T[] array, Predicate<T> pred)
+    {
+        final Iterator<T> var = Arrays.stream(array).iterator();
+        return exists(var, pred);
+    }
+
+    public static <T> boolean exists(Iterable<T> iterable, Predicate<T> pred)
+    {
+        final Iterator <T> var = iterable.iterator();
+        return exists(var, pred);
+    }
+
+    public static <T> boolean exists(Iterator<T> iterator, Predicate<T> pred)
+    {
+        return exists(iterator, pred);
+    }
+
+    /**
+     * Find method : 
+     * return object
+     * 
+     * @param <T> generic
+     * @param array 
+     * @param value
+     * @return
+     */
+    public static <T> T find(T[] array, T value)
+    {
+        for(T i : array)
+        {
+            if(i == value)
+            {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public static <T> T find(Iterable<T> iterable, T value)
+    {
+        for(T i : iterable)
+        {
+            if(i == value)
+            {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public static <T> T find(Iterator<T> iterator, T value)
+    {
+        while (iterator.hasNext())
+        {
+            if(iterator.next() == value)
+            {
+                return iterator.next();
+            }
+        }
+        return null;
+    }
+
+    public static <T> T find(T[] array, Predicate<T> pred)
+    {
+        for(T i : array)
+        {
+            if(pred.predicate(i))
+            {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public static <T> T find(Iterable<T> iterable, Predicate<T> pred)
+    {
+        for(T i : iterable)
+        {
+            if(pred.predicate(i))
+            {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    public static <T> T find(Iterator<T> iterator, Predicate<T> pred)
+    {
+        while (iterator.hasNext())
+        {
+            if(pred.predicate(iterator.next()))
+            {
+                return iterator.next();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Max method : 
+     * return biggest object between two parameter
+     * 
+     * @param first
+     * @param second
+     * @return biggest object
+     */
+    public static <T extends Comparable<? super T>> T max(T first, T  second)
+    {
+        if(first.compareTo(second) >= 0)
+        {
+            return first;
+        }
+        return second;
+    }
+
+    public static <T extends Comparable<? super T>> T max(T[] array)
+    {
+        T maximum = array[0];
+
+        for (T each : array)
+        {
+            if(each.compareTo(maximum) > 0)
+            {
+                maximum = each;
+            }
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(Iterable<T> iterable)
+    {
+        final Iterator <T> each  = iterable.iterator();
+        T maximum = null;
+        while(each.hasNext())
+        {
+            if (each.next().compareTo(maximum) > 0)
+            {
+                maximum = each.next();
+            }
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(Iterator<T> iterator)
+    {
+        T maximum = null;
+        while(iterator.hasNext())
+        {
+            if(iterator.next().compareTo(maximum) >= 0)
+            {
+
+            }
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(T first, T second, Comparator<? super T> comparator)
+    {
+        T maximum;
+        if(comparator.compare(first, second) >= 0)
+        {
+            maximum = first;
+        }
+        else
+        {
+            maximum = second;
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(T[] array, Comparator<? super T> comparator)
+    {
+        T maximum = null;
+
+        for (T each : array)
+        {
+            if(comparator.compare(each, maximum) >= 0)
+            {
+                maximum = each;
+            }
+            else {
+                maximum = maximum;
+            }
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(Iterable<T> iterable, Comparator<? super T> comparator)
+    {
+        final Iterator <T> each  = iterable.iterator();
+        T maximum = null;
+        while(each.hasNext())
+        {
+            if (comparator.compare(each.next(), maximum) >= 0)
+            {
+                maximum = each.next();
+            }
+        }
+        return maximum;
+    }
+
+    public static <T extends Comparable<? super T>> T max(Iterator<T> iterator, Comparator<? super T> comparator)
+    {
+        T maximum = null;
+        while(iterator.hasNext())
+        {
+            if(comparator.compare(iterator.next(), maximum)>= 0)
+            {
+                maximum = iterator.next();
+            }
+        }
+        return maximum;
+    }
+
+    /**
+     * Min method : 
+     * return smallest object between two parameter
+     * @param first
+     * @param second
+     * @return smallest object
+     */
+    public static <T extends Comparable<? super T>> T min(T  first, T  second)
+    {
+        if(first.compareTo(second) < 0)
+        {
+            return first;
+        }
+        return second;
+    }
+
+    public static <T extends Comparable<? super T>> T min(T[] array)
+    {
+        T minimum = null;
+
+        for (T each : array)
+        {
+            if(each.compareTo(minimum) < 0)
+            {
+                minimum = each;
+            }
+            else
+            {
+                minimum = minimum;
+            }
+        }
+        return minimum;
+    }
+
+    public static <T extends Comparable<? super T>> T min(Iterable<T> iterable)
+    {
+        final Iterator <T> each  = iterable.iterator();
+        T minimum = null;
+
+        while(each.hasNext())
+        {
+            if (each.next().compareTo(minimum) < 0)
+            {
+                minimum = each.next();
+            }
+        }
+        return minimum;
+    }
+
+    public static <T extends Comparable<? super T>> T min(Iterator<T> iterator)
+    {
+        T minimum = null;
+
+        while(iterator.hasNext())
+        {
+            if(iterator.next().compareTo(minimum) >= 0)
+            {
+                minimum = iterator.next();
+            }
+        }
+        return minimum;
+    }
+
+    public static <T extends Comparable<? super T>> T min(T first, T second, Comparator<? super T> comparator)
+    {
+        T minimum;
+
+        if(comparator.compare(first, second) >= 0)
+        {
+            minimum = first;
+        }
+        else
+        {
+            minimum = second;
+        }
+        return minimum;
+    }
+
+    public static <T extends Comparable<? super T>> T min(T[] array, Comparator<? super T> comparator)
+    {
+        T minimum = null;
+
+        for (T each : array)
+        {
+            if(comparator.compare(each, minimum) <= 0)
+            {
+                minimum = each;
+            }
+            else
+            {
+                minimum = minimum;
+            }
+        }
+        return minimum;
+    }
+
+
+ public static <T extends Comparable<? super T>> T min(Iterable<T> iterable, Comparator<? super T> comparator)
+    {
+        final Iterator <T> each  = iterable.iterator();
+        T minimum = null;
+
+        while(each.hasNext())
+        {
+            if (comparator.compare(each.next(), minimum) <= 0)
+            {
+                minimum = each.next();
+            }
+        }
+        return minimum;
+    }
+
+    public static <T extends Comparable<? super T>> T min(Iterator<T> iterator, Comparator<? super T> comparator)
+    {
+        T minimum = null;
+
+        while(iterator.hasNext())
+        {
+            if(comparator.compare(iterator.next(), minimum)>= 0)
+            {
+                minimum = iterator.next();
+            }
+        }
+        return minimum;
+    }
+
+    /**
+     * Collect method : 
+     * return object on a list
+     * @param <T> generic
+     * @param array
+     * @param value
+     * @return new list
+     */
+    public static<T> List<T> collect(T[] array, T value)
+    {
+        List<T> list = new ArrayList<T>();
+
+        for (T each: array)
+        {
+            if(each.equals(value))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    public static<T> List<T> collect(Iterable<T> iterable, T value)
+    {
+        List<T> list = new ArrayList<T>();
+
+        for (T each: iterable)
+        {
+            if(each.equals(value))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    public static<T> List<T> collect(Iterator<T> iterator, T value)
+    {
+        List<T> list = new ArrayList<T>();
+
+        while(iterator.hasNext())
+        {
+            T each = iterator.next();
+            if(each.equals(value))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    public static<T> List<T> collect(T[] array, Predicate<T> pred)
+    {
+        List<T> list = new ArrayList<T>();
+
+        for (T each: array)
+        {
+            if(pred.predicate(each))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    public static<T> List<T> collect(Iterable<T> iterable, Predicate<T> pred)
+    {
+        List<T> list = new ArrayList<T>();
+
+        for (T each: iterable)
+        {
+            if(pred.predicate(each))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    public static<T> List<T> collect(Iterator<T> iterator, Predicate<T> pred)
+    {
+        List<T> list = new ArrayList<T>();
+
+        while(iterator.hasNext())
+        {
+            T each = iterator.next();
+            if(pred.predicate(each))
+            {
+                list.add(each);
+            }
+        }
+        return list;
+    }
+
+    
+    public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred)
+    {
+        return Arrays.stream(array).filter(pred::predicate).skip((long) pageSize *page).limit(pageSize).collect(Collectors.toList());
+    }
+    
+    /**
+     * Paginate method : 
+     * Display page and product on the page
+     * @param <T> 
+     * @param iterable
+     * @param page
+     * @param pageSize
+     * @param pred
+     * @return object with appropriate parameter
+     */
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred)
+    {
+        List<T> list = new ArrayList<T>();
+        int counter = 0, counterPrint = 0;
+        int size = pageSize * page;
+
+        for (T each : iterable)
+        {
+            if (counter < size && pred.predicate(each))
+            {
+                counter++;
+                continue;
+            }
+            if (counterPrint < pageSize && pred.predicate(each))
+            {
+                list.add(each);
+                counterPrint++;
+            }else
+            {
+                break;
+            }
+        }
+        return list;
+    }
+
+    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred)
+    {
+        int iteration = 0;
+        int occurences = 0;
+        int startingIdx = page * pageSize;
+        List<T> pageList = new ArrayList<>(pageSize);
+
+        List<T> array = new ArrayList<T>();
+
+        iterator.forEachRemaining(array::add);
+
+        for (; iteration < array.size() && occurences < startingIdx; ++iteration)
+        {
+            if (pred.predicate(array.get(iteration)))
+            {
+                ++occurences;
+            }
+        }
+        for (int i = 0; i < array.size() && pageList.size() < pageSize; ++i)
+        {
+            if (pred.predicate(array.get(iteration)))
+            {
+                pageList.add(array.get(iteration));
+            }
+        }
+        return pageList;
+    }
 }

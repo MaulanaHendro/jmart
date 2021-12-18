@@ -2,10 +2,9 @@ package com.MaulanaNurhendronotoJmartAK;
 
 
 /**
- * Jmart Praktikum Modul 2.
+ * ProductRating Class
  *
- * @Maulana Nurhendronoto 2006577542
- * @version (a version number or a date)
+ * @author Maulana Nurhendronoto
  */
 public class ProductRating
 {

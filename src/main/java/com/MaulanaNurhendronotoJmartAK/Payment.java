@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Write a description of class Payment here.
+ * Payment Class : 
+ * Store value of shipment, status
  *
- * @Maulana Nurhendronoto
+ * @author Maulana Nurhendronoto
  */
 
 public class Payment extends Invoice
@@ -25,20 +26,20 @@ public class Payment extends Invoice
     @Override
     public double getTotalPay(Product product) 
     {
-        return product.discount * product.price;
+        return (product.discount/100) * product.price;
     }
 
-    public class Record {
+    public static class Record {
         public final Date date;
-        public String massage;
+        public String message;
         public Status status;
 
 
-        public Record(Status status, String massage)
+        public Record(Status status, String message)
         {
             date = java.util.Calendar.getInstance().getTime();
             this.status = status;
-            this.massage = massage;
+            this.message = message;
         }
 
     }

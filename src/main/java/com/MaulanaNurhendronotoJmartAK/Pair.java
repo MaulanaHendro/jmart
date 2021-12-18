@@ -1,5 +1,12 @@
 package com.MaulanaNurhendronotoJmartAK;
 
+/**
+ * Pair Class
+ * @author Maulana Nurhendronoto
+ *
+ * @param <T> first
+ * @param <U> second
+ */
 public class Pair <T, U>
 {
 	public T first;

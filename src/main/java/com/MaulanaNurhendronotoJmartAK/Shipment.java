@@ -5,9 +5,9 @@ import java.util.Date;
 import java.util.Calendar;
 
 /**
- * Praktikum Modul 3 Post test
+ * Shipment Class
  *
- * @Maulana Nurhendronoto (2006577542)
+ * @author Maulana Nurhendronoto (2006577542)
  */
 public class Shipment
 {
@@ -17,10 +17,10 @@ public class Shipment
     public static final Plan NEXT_DAY = new Plan((byte)(1 << 2));
     public static final Plan REGULER = new Plan((byte)(1 << 3));
     public static final Plan KARGO = new Plan((byte)(1 << 4));
-    String address;
+    public String address;
     int cost;
     byte plan;
-    String receipt;
+    public String receipt;
     
     public static class Plan
     {
